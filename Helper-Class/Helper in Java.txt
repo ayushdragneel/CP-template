@@ -1,12 +1,12 @@
 class HelpMe{
 	/*.......................Pair-Class..............................*/
     class Pair{
-	    int x;int y;
-		Pair(int x,int y){
-		    this.x=x;
-			this.y=y;
-				}
-		}
+	int x;int y;
+	Pair(int x,int y){
+	   this.x=x;
+	   this.y=y;
+	}
+    }
 	/*.......................GCD..............................*/
 	long gcd(long a,long b) {return b==0 ?a:gcd(b, a%b);}
 	long gcdA(long a[]) {
