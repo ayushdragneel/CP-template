@@ -1,0 +1,141 @@
+class HelpMe{
+	/*.......................Pair-Class..............................*/
+    class Pair{
+	    int x;int y;
+		Pair(int x,int y){
+		    this.x=x;
+			this.y=y;
+				}
+		}
+	/*.......................GCD..............................*/
+	long gcd(long a,long b) {return b==0 ?a:gcd(b, a%b);}
+	long gcdA(long a[]) {
+	   long g=0;
+	   for(int i=0;i<a.length;i++) {
+	       g=gcd(g,a[i]);
+	   }
+	   return g;
+	}
+	/*.......................MAX/MIN..............................*/
+	static long min(long a,long b) {
+	   return Math.min(a, b);
+	}
+	static long min(long a,long b,long c) {
+	    return Math.min(a, Math.min(b, c));
+	}
+	long min(long a[]) {
+	    long min=Integer.MAX_VALUE;
+	    for(int i=0;i<a.length;i++)min=Math.min(a[i], min);
+	    return min;
+	}
+	static long max(long a,long b) {
+	    return Math.max(a, b);
+	}
+	static long max(long a,long b,long c) {
+	    return Math.max(a, Math.max(b, c));
+	}
+	long max(long a[]) {
+	    long max=Integer.MIN_VALUE;
+	    for(int i=0;i<a.length;i++)max=Math.max(a[i], max);
+	    return max;
+	}
+	/*.......................SUM..............................*/
+	long sum(long a[]) {
+	    long sum=0;
+	    for(int i=0;i<a.length;i++)sum=sum+a[i];
+	    return sum(a);
+    }
+    /*.......................Sorting..............................*/
+    void sortI(int a[],int order){
+        ArrayList<Integer> arrayList=new ArrayList<>();
+        for (int i = 0; i < a.length; i++)arrayList.add(a[i]);
+        if(order==1)
+        Collections.sort(arrayList);
+        else 
+        Collections.sort(arrayList,Collections.reverseOrder());
+        for(int i=0;i<a.length;i++)a[i]=arrayList.get(i);
+    }
+    void sortL(long a[],int order){
+        ArrayList<Long> arrayList=new ArrayList<>();
+        for (int i = 0; i < a.length; i++)arrayList.add(a[i]);
+        if(order==1)
+        Collections.sort(arrayList);
+        else 
+        Collections.sort(arrayList,Collections.reverseOrder());
+        for(int i=0;i<a.length;i++)a[i]=arrayList.get(i);
+    }
+    void sort(Pair a[],int order) {
+        Arrays.sort(a,new Comparator<Pair>() {
+            @Override
+            public int compare(Pair p1,Pair p2) {
+                return (p1.y-p2.y)*order;
+            }
+        });
+    }
+    /*.......................lower/upper bound..............................*/
+    public static int upper(int A[],int k,int si,int ei)
+    {
+        int l=si;
+        int u=ei;
+        int ans=-1;
+        while(l<=u) {
+            int mid=(l+u)/2;
+            if(A[mid]<=k) {
+                ans=mid;
+                l=mid+1;
+            }
+            else {
+                u=mid-1;
+            }
+        }
+        return ans;
+    }
+    public static int lower(int A[],int k,int si,int ei)
+    {
+        int l=si;
+        int u=ei;
+        int ans=-1;
+        while(l<=u) {
+            int mid=(l+u)/2;
+            if(A[mid]<=k) {
+                l=mid+1;
+            }
+            else {
+                ans=mid;
+                u=mid-1;
+            }
+        }
+        return ans;
+    }
+    /*.......................Filling Array..............................*/
+    static void fill(long dp[],long x) {
+        Arrays.fill(dp,x);
+    }
+    static void fill(long dp[][],long x) {
+        for(int i=0;i<dp.length;i++)
+        Arrays.fill(dp[i],x);
+    }
+    static void fill(long dp[][][],long x) {
+        for(int i=0;i<dp.length;i++) {
+            for(int j=0;j<dp[0].length;j++) {
+                Arrays.fill(dp[i][j],x);
+            }
+        }
+    }
+    static void fill(long dp[][][][],long x) {
+        for(int i=0;i<dp.length;i++) {
+            for(int j=0;j<dp[0].length;j++) {
+                for(int k=0;k<dp[0][0].length;k++) {
+                    Arrays.fill(dp[i][j][k],x);
+                }
+            }
+        }
+    }
+    /*.......................Prime..............................*/
+    boolean prime(int n) {
+        for (int i=2; i*i <=n; i++){
+            if(n%i==0)return false;
+        }
+        return true;
+    }
+}
