@@ -1,5 +1,3 @@
-
-
 class HelpMe {
 	/* .......................Pre_Value.............................. */
 	long factorial[] = new long[500000];
