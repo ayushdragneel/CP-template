@@ -1,0 +1,33 @@
+class SegmentTree {
+	int seg[];
+	int arr[];
+	int n;
+
+	public SegmentTree(int arr[], int n) {
+		this.n = n;
+		seg = new int[n * 4];
+		this.arr = arr;
+	}
+
+	int task(int a, int b) {
+		return Math.min(a, b);// TO DO
+	}
+
+	int mSeg(int i, int l, int r) {
+		if (l == r) {
+			seg[i] = task(arr[l], arr[l]);
+			return arr[l];
+		}
+		int m = (l + r) / 2;
+		return seg[i] = task(mSeg(2 * i + 1, l, m), mSeg(2 * i + 2, m + 1, r));
+	}
+
+	int qSeg(int ql, int qr, int i, int l, int r) {
+		if (r < ql || l > qr)
+			return Integer.MAX_VALUE;// TO DO
+		if (ql <= l && qr >= r)
+			return seg[i];
+		int m = (l + r) / 2;
+		return task(qSeg(ql, qr, 2 * i + 1, l, m), qSeg(ql, qr, 2 * i + 2, m + 1, r));
+	}
+}
